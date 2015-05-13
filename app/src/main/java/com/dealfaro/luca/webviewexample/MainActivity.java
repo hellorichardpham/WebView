@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
     static final public String LOG_TAG = "webview_example";
     static final private String SAN_JOSE_MERCURY_URL = "http://www.mercurynews.com";
     static final private String SANTA_CRUZ_SENTINAL_URL = "http://www.santacruzsentinel.com";
-    static final private String SF_GATE_URL = "m.sfgate.com";
+    static final private String SF_GATE_URL = "http://www.sfgate.com";
 
 
     WebView myWebView;
