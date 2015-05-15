@@ -29,7 +29,7 @@ public class ReaderActivity extends ActionBarActivity {
     static final public String WEBPAGE_NOTHING = "about:blank";
     WebView myWebView;
     static final public String LOG_TAG = "webview_example";
-
+    static final private String CNN_URL = "www.cnn.com";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +37,7 @@ public class ReaderActivity extends ActionBarActivity {
         Bundle extras = getIntent().getExtras();
         WEBPAGE_URL = extras.getString("TargetWebPage");
         myWebView = (WebView) findViewById(R.id.webView);
-        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.setWebViewClient(new MyWebViewClient());
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         // Binds the Javascript interface
@@ -102,17 +102,6 @@ public class ReaderActivity extends ActionBarActivity {
             mContext = c;
         }
 
-        @JavascriptInterface
-        public void myFunction(String args) {
-            final String myArgs = args;
-            Log.i(LOG_TAG, "I am in the javascript call.");
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    //Button v = (Button) findViewById(R.id.button1);
-                    //v.setText(myArgs);
-                }
-            });
-        }
     }
 
     @Override
@@ -136,4 +125,20 @@ public class ReaderActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (Uri.parse(url).getHost().equals(WEBPAGE_URL) || Uri.parse(url).getHost().equals(CNN_URL)) {
+                // This is my web site, so do not override; let my WebView load the page
+                return false;
+            }
+            // Otherwise, the link is not for a page on my site,
+            // so launch another Activity that handles URLs
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+            return true;
+        }
+    }
+
 }
