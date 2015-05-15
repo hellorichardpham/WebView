@@ -1,4 +1,4 @@
-package com.dealfaro.luca.webviewexample;
+package com.pham.richard.webview;
 
 import android.content.Context;
 import android.content.Intent;

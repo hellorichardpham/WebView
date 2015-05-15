@@ -1,4 +1,4 @@
-package com.dealfaro.luca.webviewexample;
+package com.pham.richard.webview;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+
+import com.pham.richard.webview.R;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
