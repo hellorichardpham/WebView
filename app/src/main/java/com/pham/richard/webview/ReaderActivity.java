@@ -37,6 +37,8 @@ public class ReaderActivity extends ActionBarActivity {
         Bundle extras = getIntent().getExtras();
         WEBPAGE_URL = extras.getString("TargetWebPage");
         myWebView = (WebView) findViewById(R.id.webView);
+        //Force the client to open links using our
+        //Url Overriding in MyWebViewClient
         myWebView.setWebViewClient(new MyWebViewClient());
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -101,7 +103,16 @@ public class ReaderActivity extends ActionBarActivity {
         JavaScriptInterface(Context c) {
             mContext = c;
         }
+        @JavascriptInterface
+        public void myFunction(String args) {
+            final String myArgs = args;
+            Log.i(LOG_TAG, "I am in the javascript call.");
+            runOnUiThread(new Runnable() {
+                public void run() {
+                }
+            });
 
+        }
     }
 
     @Override

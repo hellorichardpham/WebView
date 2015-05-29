@@ -25,16 +25,11 @@ public class MainActivity extends ActionBarActivity {
     static final private String SANTA_CRUZ_SENTINAL_URL = "http://www.santacruzsentinel.com";
     static final private String CNN_URL = "http://www.cnn.com";
 
-
-    WebView myWebView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-
 
     /*When the button is clicked, retrieve the button ID from
     the button that was clicked. Send the URL to ReaderActivity
@@ -51,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
                 intent.putExtra("TargetWebPage", SANTA_CRUZ_SENTINAL_URL);
                 break;
 
-            case R.id.SFGateButton:
+            case R.id.CNNButton:
                 intent.putExtra("TargetWebPage", CNN_URL);
                 break;
         }
